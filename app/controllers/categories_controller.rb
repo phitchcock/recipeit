@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   #before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @categories = Category.all
+    @categories = Category.paginate(:page => params[:page], :per_page => 30)
   end
 
   def show
