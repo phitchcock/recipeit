@@ -6,7 +6,6 @@ deployment:
     branch: master
     commands:
       - heroku maintenance:on --app recipeit-app
-      - heroku pg:backups capture --app recipeit-app
       - git push git@heroku.com:recipeit-app.git 
       - heroku run rake db:migrate --app recipeit-app
       - heroku maintenance:off --app recipeit-app
