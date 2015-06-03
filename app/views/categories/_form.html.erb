@@ -1,4 +1,5 @@
 <%= form_for(@category) do |f| %>
+  <%= render 'shared/errors', obj: @category %>
   <div>
     <%= f.label :name %>
     <%= f.text_field :name %>
