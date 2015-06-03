@@ -7,13 +7,13 @@ deployment:
     commands:
       - heroku maintenance:on --app recipeit-app
       - heroku pg:backups capture --app recipeit-app
-      - git push git@heroku.com:recipeit-app.git $CIRCLE_SHA1:refs/heads/master
+      - git push git@heroku.com:recipeit-app.git 
       - heroku run rake db:migrate --app recipeit-app
       - heroku maintenance:off --app recipeit-app
   staging:
     branch: staging
     commands:
       - heroku maintenance:on --app recipeit-staging-app
-      - git push git@heroku.com:recipeit-staging-app.git $CIRCLE_SHA1:refs/heads/master
+      - git push git@heroku.com:recipeit-staging-app.git 
       - heroku run rake db:migrate --app recipeit-staging-app
       - heroku maintenance:off --app recipeit-staging-app
