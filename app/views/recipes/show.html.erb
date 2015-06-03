@@ -1,1 +1,24 @@
 <h1><%= @recipe.title %></h1>
+
+<h2>Comments</h2>
+<hr>
+
+<% @recipe.comments.each do |comment| %>
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+<% end %>
+
+<h2>Add Comment</h2>
+
+<%= form_for([@recipe, @comment]) do |f| %>
+  <div>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+
+<% end %>
