@@ -1,5 +1,13 @@
 <h1><%= @recipe.title %></h1>
 
+<div>
+  <ul>
+    <% @recipe.categories.each do |category| %>
+      <li>Category: <%= link_to category.name, category_path(category) %></li>
+    <% end %>
+  </ul>
+</div>
+
 <h2>Comments</h2>
 <hr>
 
