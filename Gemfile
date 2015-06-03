@@ -12,6 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'unicorn'
 gem 'newrelic_rpm'
 gem 'rack-timeout'
+gem 'devise'
 
 group :production do
   gem 'pg'
