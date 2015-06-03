@@ -15,6 +15,7 @@ gem 'rack-timeout'
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'autoprefixer-rails'
+gem 'friendly_id', '~> 5.1.0'
 
 group :production do
   gem 'pg'

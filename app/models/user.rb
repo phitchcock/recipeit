@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  #extend FriendlyId
+  #friendly_id :email, use: :slugged
+
   has_many :recipes
   has_many :comments
   # Include default devise modules. Others available are:
