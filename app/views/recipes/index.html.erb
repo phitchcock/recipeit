@@ -5,3 +5,7 @@
 <% end %>
 
 <%= link_to 'New', new_recipe_path %>
+
+<div>
+  <%= will_paginate @recipes %>
+</div>
