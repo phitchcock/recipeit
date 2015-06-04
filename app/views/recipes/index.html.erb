@@ -1,11 +1,21 @@
 <h1>Recipes</h1>
 
 <% @recipes.each do |recipe| %>
-  <p><%= link_to recipe.title, recipe_path(recipe) %> | <%= link_to 'Edit', edit_recipe_path(recipe) %></p>
-<% end %>
+  <p><%= link_to recipe.title, recipe_path(recipe) %> | <%= link_to 'Edit', edit_recipe_path(recipe) %> 
+    | 
+      <%= link_to vote_recipe_path(recipe, vote: true), method: 'post' do %>
+        <span>up</span>
+      <% end %>
+    |
+    Votes: <%= recipe.total_votes %>
+    |
+      <%= link_to vote_recipe_path(recipe, vote: false), method: 'post' do %>
+        <span>down</span>
+      <% end %>
+<% end %></p>
 
 <%= link_to 'New', new_recipe_path %>
 
 <div>
-  <%= will_paginate @recipes %>
+  <%#= will_paginate @recipes %>
 </div>
