@@ -1,10 +1,12 @@
+require 'will_paginate/array' 
+
 class RecipesController < ApplicationController
 
-  before_action :set_recipe, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
+  before_action :set_recipe, only: [:show, :edit, :update, :destroy, :vote]
+  before_action :authenticate_user!, only: [:new, :create, :update, :destroy, :vote]
 
   def index
-    @recipes = Recipe.paginate(:page => params[:page], :per_page => 30)
+    @recipes = Recipe.paginate(:page => params[:page], :per_page => 30).sort_by{|x| x.total_votes}.reverse
   end
 
   def show
@@ -41,6 +43,18 @@ class RecipesController < ApplicationController
     else
       redirect_to @recipe
     end
+  end
+
+  def vote
+    @vote = Vote.create(voteable: @recipe, user: current_user, vote: params[:vote])
+
+    if @vote.valid?
+      flash[:notice] = "Vote counted"
+    else
+      flash[:error] = "Vote not counted"
+    end
+
+    redirect_to :back
   end
 
   private
